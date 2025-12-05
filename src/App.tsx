@@ -1,9 +1,12 @@
-import { Button } from "./components/ui/button";
+import { Outlet } from "react-router";
+import Layout from "./components/layout/Layout";
 
 const App = () => {
   return (
     <div>
-      <Button>Click me</Button>
+      <Layout>
+        <Outlet />
+      </Layout>
     </div>
   );
 };

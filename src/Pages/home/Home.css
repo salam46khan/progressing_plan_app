@@ -1,0 +1,9 @@
+.myBanner{
+    height: 70vh;
+    width: 100%;
+    background:linear-gradient(120deg, #e0cfffe0, #aff6ffe5), url('@/assets/pic/banner.jpeg');
+    
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
