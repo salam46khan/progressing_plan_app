@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 interface IProps {
     children: ReactNode
@@ -13,7 +14,7 @@ const Layout = ({children}: IProps) => {
             <div className="flex-1 border">
                 {children}
             </div>
-            footer 
+            <Footer />
         </div>
     );
 };
