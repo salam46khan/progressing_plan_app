@@ -1,0 +1,10 @@
+input, textarea, select{
+    width: 100%;
+    background: #fff;
+    padding: 6px 10px;
+    border-radius: 10px;
+    box-shadow:  0px 0px 10px #22213052;
+    border: none;
+    outline:none;
+    margin-top: 5px;
+}
