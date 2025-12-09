@@ -3,13 +3,15 @@ import { useState } from "react";
 import "./AddPlan.css"
 import { Button } from "@/components/ui/button";
 import {type Plan } from "@/types";
+import { useLocation } from "react-router";
 
 
 const AddPlan = () => {
     const {plan, setPlan} = usePlan()
-    console.log(plan);
     const [err, setErr] = useState('')
-    const [formData, setFormData] = useState<Plan>({
+    const {state} = useLocation()
+    
+    const [formData, setFormData] = useState<Plan>(state || {
         id: crypto.randomUUID(),
         title: "",
         description: "",
@@ -22,7 +24,7 @@ const AddPlan = () => {
     const HandleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement| HTMLTextAreaElement>) =>{
         const dataName = e.target.name
         const dataValue = e.target.value
-        const processValue = dataName === "tags" ? dataValue.split(",").map(tag => tag.trim()): dataValue
+        const processValue = dataName === "tags" ? dataValue.split(","): dataValue
 
         setFormData({
             ...formData,
@@ -50,10 +52,20 @@ const AddPlan = () => {
             return
         }
         
-            
-        console.log(formData);
+        if(state){
+            setPlan(
+                plan.map(p => {
+                    if(p.id === state.id){
+                        return formData
+                    }else{
+                        return p
+                    }
+                })
+            )
+        }else{
+            setPlan([...plan, formData])
+        }
         
-        setPlan([...plan, formData])
         setFormData({
             id: crypto.randomUUID(),
             title: "",
@@ -68,7 +80,7 @@ const AddPlan = () => {
     return (
         <div className="flex justify-center items-center">
             <div className="w-full max-w-3xl my-10 bg-green-800/25 p-10 rounded-2xl">
-                <h3 className="text-2xl font-bold">Add Plan</h3>
+                <h3 className="text-2xl font-bold">{state ? "Edit Plan": "Add Plan"}</h3>
 
                 <form>
                     <div className="py-2">

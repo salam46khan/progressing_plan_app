@@ -21,4 +21,6 @@ export type Plan = {
 export type PlanContextType = {
   plan: Plan[];
   setPlan: React.Dispatch<React.SetStateAction<Plan[]>>;
+  planToUpdate: Plan[];
+  setPlanToUpdate: React.Dispatch<React.SetStateAction<Plan[]>>;
 };
