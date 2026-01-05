@@ -33,7 +33,6 @@ const AddPlan = () => {
     }
 
     const handleSubmit = () => {
-        console.log('click');
         setErr("")
         if(formData.title === ""){
             setErr("Title is empty, please Provide plan title")
@@ -122,7 +121,9 @@ const AddPlan = () => {
                     {
                         err && <p className="text-red-500">{err}</p>
                     }
-                    <Button onClick={handleSubmit} type="button" className="bg-green-600 w-full mt-2">Add Plan</Button>
+                    <Button onClick={handleSubmit} type="button" className="bg-green-600 w-full mt-2">
+                        {state ? "Edit Plan": "Add Plan"}
+                    </Button>
                 </form>
             </div>
         </div>
